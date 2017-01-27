@@ -1,7 +1,5 @@
 <?php
 
-require_once "autoload.php";
-
 use SuperHero\Dispatcher;
 
 define('_PUBLIC_PATH_', __DIR__ .'\\public\\');
