@@ -2,104 +2,113 @@
 
 namespace src\Controller;
 
-use src\Model\HeroPowerDTO;
-use src\Model\PowerDAO;
-use src\Model\SuperHeroDAO;
-use src\Model\SuperHeroDTO;
-use src\Model\TeamDAO;
-use src\Model\TeamDTO;
-use src\View\View;
+use src\Entity\Hero;
+use src\Entity\Power;
+use src\Entity\Team;
 
-class HeroController extends Controller
-{
-    /**
-     * TODO passer en anglais
-     * function qui demande au model tous les super heros
-     * affiche ensuite la vue heroView.php avec les heros
-     */
-    public function getAllAction($datas=null){
-        $heroes = $this->heroDAO->getAllHero();
+class HeroController extends Controller{
 
-        foreach ($heroes as $hero){
-            $team = new TeamDAO();
-            $teamDTO = new TeamDTO();
-            $teamDTO->setTeamId($hero->getHeroTeamId());
-            $teamDTO = $team->getOneTeam($teamDTO);
-            $hero->setHeroTeamId($teamDTO);
-        }
-        $teamDAO = new TeamDAO();
-        $teams = $teamDAO->getAllTeam();
+    public function indexAction(){
+        $em = $this->getDoctrine();
+        $userRepo = $em->getRepository('src\Entity\Hero');
 
-        $powerDAO = new PowerDAO();
-        $powers = $powerDAO->getAllPower();
+        return $this->render('hero', 'allHero', [
+            "users" => $userRepo->findAll()
+        ]);
 
-        $view = new View('hero','allHero');
-        return $view->renderView(['heroes'=>$heroes,'teams'=>$teams,'powers'=>$powers]);
     }
 
-    /**
-     * @param null $datas
-     */
-    public function getOneAction($datas=null){
-        if(isset($datas[2])) {
-            $this->heroDTO->setHeroID($datas[2]);
-            $this->heroDTO = $this->heroDAO->getOneHero($this->heroDTO);
-            $teamDAO = new TeamDAO();
-            $teams = $teamDAO->getAllTeam();
-            $view = new View('hero','oneHero');
-            return $view->renderView(['heroDTO'=>$this->heroDTO,'teams'=>$teams]);
-        }
+    public function getAllAction(){
+
     }
 
-    /**
-     * @param null $data
-     */
-    public function insertAction($data=null){
-        if (isset($_POST)&&!empty($_POST)){
-            var_dump($_POST);
-            $powerLevels = [];
-            foreach ($_POST['heroPower']as $powerDetail){
-                foreach ($_POST as $key => $value){
-                    if('heroPowerLevel'.$powerDetail===$key){
-                        $heropower = new HeroPowerDTO();
-                        $heropower->setHeroPowerHeroID($this->heroDTO->getHeroID());
-                        $heropower->setHeroPowerPowerId($powerDetail);
-                        $heropower->setHeroPowerLevel($value);
-                        $powerLevels[]= 2;
-                    }
-                }
-            }
-            die();
-            $this->heroDTO->hydrate($_POST);
-            $this->heroDAO->insertHero($this->heroDTO);
-            header("location: /".PATH."/index.php/hero/getAll");
-        }
-    }
 
-    /**
-     * @param null $datas
-     */
-    public function updateAction($datas=null){
-        if(isset($datas[2])) {
-            $heroDTO = new SuperHeroDTO();
-            $heroDTO->setHeroID($datas[2]);
-            $heroDTO->hydrate($_POST);
-            $heroDAO = new SuperHeroDAO();
-            $heroDAO->updateHero($heroDTO);
-        }
-        header("location: /".PATH."/index.php/hero/getAll");
-    }
 
-    /**
-     *
-     * @param null $datas
-     */
-    public function deleteAction($datas=null){
-        if(isset($datas[2])) {
-            $this->heroDTO->setHeroID($datas[2]);
-            $this->heroDAO->deleteHero($this->heroDTO);
-        }
-        header("location: /".PATH."/index.php/hero/getAll");
-    }
+
+
+//    public function getAllAction($datas=null){
+//        $heroes = $this->heroDAO->getAllHero();
+//
+//        foreach ($heroes as $hero){
+//            $team = new TeamDAO();
+//            $teamDTO = new TeamDTO();
+//            $teamDTO->setTeamId($hero->getHeroTeamId());
+//            $teamDTO = $team->getOneTeam($teamDTO);
+//            $hero->setHeroTeamId($teamDTO);
+//        }
+//        $teamDAO = new TeamDAO();
+//        $teams = $teamDAO->getAllTeam();
+//
+//        $powerDAO = new PowerDAO();
+//        $powers = $powerDAO->getAllPower();
+//
+//        $view = new View('hero','allHero');
+//        return $view->renderView(['heroes'=>$heroes,'teams'=>$teams,'powers'=>$powers]);
+//    }
+//
+//    /**
+//     * @param null $datas
+//     */
+//    public function getOneAction($datas=null){
+//        if(isset($datas[2])) {
+//            $this->heroDTO->setHeroID($datas[2]);
+//            $this->heroDTO = $this->heroDAO->getOneHero($this->heroDTO);
+//            $teamDAO = new TeamDAO();
+//            $teams = $teamDAO->getAllTeam();
+//            $view = new View('hero','oneHero');
+//            return $view->renderView(['heroDTO'=>$this->heroDTO,'teams'=>$teams]);
+//        }
+//    }
+//
+//    /**
+//     * @param null $data
+//     */
+//    public function insertAction($data=null){
+//        if (isset($_POST)&&!empty($_POST)){
+//            var_dump($_POST);
+//            $powerLevels = [];
+//            foreach ($_POST['heroPower']as $powerDetail){
+//                foreach ($_POST as $key => $value){
+//                    if('heroPowerLevel'.$powerDetail===$key){
+//                        $heropower = new HeroPowerDTO();
+//                        $heropower->setHeroPowerHeroID($this->heroDTO->getHeroID());
+//                        $heropower->setHeroPowerPowerId($powerDetail);
+//                        $heropower->setHeroPowerLevel($value);
+//                        $powerLevels[]= 2;
+//                    }
+//                }
+//            }
+//            die();
+//            $this->heroDTO->hydrate($_POST);
+//            $this->heroDAO->insertHero($this->heroDTO);
+//            header("location: "."/index.php/hero/allHero"); (die);
+//        }
+//    }
+//
+//    /**
+//     * @param null $datas
+//     */
+//    public function updateAction($datas=null){
+//        if(isset($datas[2])) {
+//            $heroDTO = new SuperHeroDTO();
+//            $heroDTO->setHeroID($datas[2]);
+//            $heroDTO->hydrate($_POST);
+//            $heroDAO = new SuperHeroDAO();
+//            $heroDAO->updateHero($heroDTO);
+//        }
+//        header("location: "."/index.php/hero/getAll"); (die);
+//    }
+//
+//    /**
+//     *
+//     * @param null $datas
+//     */
+//    public function deleteAction($datas=null){
+//        if(isset($datas[2])) {
+//            $this->heroDTO->setHeroID($datas[2]);
+//            $this->heroDAO->deleteHero($this->heroDTO);
+//        }
+//        header("location: "."/index.php/hero/getAll"); (die);
+//    }
 
 }

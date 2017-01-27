@@ -18,10 +18,10 @@
 </header>
 <hr>
 <nav class="btn-group">
-  <a href="<?= PATH . '/index.php/' ?>" class="btn btn-default">Accueil</a>
-  <a href="<?= PATH . '/index.php/power/getAll' ?>" class="btn btn-default">Liste des pouvoirs</a>
-  <a href="<?= PATH . '/index.php/team/getAll' ?>" class="btn btn-default">Liste des teams</a>
-  <a href="<?= PATH . '/index.php/hero/getAll' ?>" class="btn btn-default">Liste des héros</a>
+  <a href="<?= '/index.php/' ?>" class="btn btn-default">Accueil</a>
+  <a href="<?= '/index.php/power/getAll' ?>" class="btn btn-default">Liste des pouvoirs</a>
+  <a href="<?= '/index.php/team/getAll' ?>" class="btn btn-default">Liste des teams</a>
+  <a href="<?= '/index.php/hero/getAll' ?>" class="btn btn-default">Liste des héros</a>
 </nav>
 <hr>
 <main>
