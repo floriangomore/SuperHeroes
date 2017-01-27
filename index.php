@@ -1,6 +1,7 @@
 <?php
 
-use SuperHero\Dispatcher;
+use src\Dispatcher;
+
 
 define('_PUBLIC_PATH_', __DIR__ .'\\public\\');
 if (isset($_SERVER['PATH_INFO'])&&$_SERVER['PATH_INFO']!=null){

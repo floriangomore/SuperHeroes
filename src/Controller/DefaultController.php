@@ -1,8 +1,8 @@
 <?php
 
-namespace SuperHero\Controller;
+namespace src\Controller;
 
-use \SuperHero\View\View;
+use \src\View\View;
 
 class DefaultController extends Controller
 {

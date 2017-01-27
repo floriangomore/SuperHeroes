@@ -1,6 +1,6 @@
 <?php
 
-namespace SuperHero\View;
+namespace src\View;
 
 class View
 {

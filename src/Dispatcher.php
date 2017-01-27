@@ -1,8 +1,8 @@
 <?php
 
-namespace SuperHero;
+namespace src;
 
-use SuperHero\Controller\DefaultController;
+use src\Controller\DefaultController;
 
 class Dispatcher
 {
