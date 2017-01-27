@@ -18,5 +18,8 @@
             "name": "Baptiste Donati",
             "email": "baptiste-bdb@live.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {"src\\": "src/"}
+    }
 }
