@@ -11,8 +11,8 @@ if (isset($_SERVER['PATH_INFO'])&&$_SERVER['PATH_INFO']!=null){
     $url = null;
 }
 
-$method = $_SERVER['REQUEST_METHOD'];
-const PATH = '';
+$path = explode(DIRECTORY_SEPARATOR, __DIR__);
+define('PATH', '/' . $path[sizeof($path)-1]);
 
 $dispatch = new Dispatcher($url,$method);
 echo $dispatch->dispatch();
