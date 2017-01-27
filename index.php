@@ -12,7 +12,7 @@ if (isset($_SERVER['PATH_INFO'])&&$_SERVER['PATH_INFO']!=null){
 }
 
 $method = $_SERVER['REQUEST_METHOD'];
-const PATH = '/';
+const PATH = '';
 
 $dispatch = new Dispatcher($url,$method);
 echo $dispatch->dispatch();
