@@ -1,17 +1,17 @@
 <?php
-require_once "autoload.php";
+// index.php
+session_start();
 
-use src\Controller\Dispatcher;
+use Imie\Dispatcher;
+use Imie\Service\FlashBag;
+
+require_once "vendor/autoload.php";
+require_once "bootstrap.php";
 
 define('_PUBLIC_PATH_', __DIR__ .'\\public\\');
-if (isset($_SERVER['PATH_INFO'])&&$_SERVER['PATH_INFO']!=null){
-    $url = $_SERVER['PATH_INFO'];
-}else{
-    $url = null;
-}
-$method = $_SERVER['REQUEST_METHOD'];
 
-const PATH = 'SuperHero';
+$path = explode(DIRECTORY_SEPARATOR, __DIR__);
+define('PATH', '/' . $path[sizeof($path)-1]);
 
-$dispatch = new Dispatcher($url,$method);
+$dispatch = new Dispatcher($em);
 echo $dispatch->dispatch();
