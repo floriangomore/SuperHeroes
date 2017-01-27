@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Dispatcher;
+namespace src;
 
 use src\Controller\DefaultController;
 
