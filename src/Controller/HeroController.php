@@ -10,17 +10,8 @@ use src\Model\TeamDAO;
 use src\Model\TeamDTO;
 use src\View\View;
 
-class HeroController
+class HeroController extends Controller
 {
-    private $heroDAO;
-    private $heroDTO;
-
-    public function __construct()
-    {
-        $this->heroDAO = new SuperHeroDAO();
-        $this->heroDTO = new SuperHeroDTO();
-    }
-
     /**
      * TODO passer en anglais
      * function qui demande au model tous les super heros

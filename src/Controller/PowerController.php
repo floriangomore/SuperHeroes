@@ -6,16 +6,8 @@ use src\Model\PowerDAO;
 use src\Model\PowerDTO;
 use src\View\View;
 
-class PowerController
+class PowerController extends Controller
 {
-    private $powerDAO;
-    private $powerDTO;
-
-    public function __construct()
-    {
-        $this->powerDAO = new PowerDAO();
-        $this->powerDTO = new PowerDTO();
-    }
 
     public function getAllAction($datas=null,$powerUpdate=null)
     {

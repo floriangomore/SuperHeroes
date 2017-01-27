@@ -6,17 +6,8 @@ use src\Model\TeamDAO;
 use src\Model\TeamDTO;
 use src\View\View;
 
-class TeamController
+class TeamController extends Controller
 {
-    private $teamDTO;
-    private $teamDAO;
-
-    public function __construct()
-    {
-        $this->teamDAO = new TeamDAO();
-        $this->teamDTO = new TeamDTO();
-    }
-
     public function getAllAction($datas = null,$teamUpdate=null){
         $teams = $this->teamDAO->getAllTeam();
         $view = new View('team','allTeam');
