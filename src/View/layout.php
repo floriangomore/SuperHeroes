@@ -17,7 +17,12 @@
     <h1>Bienvenue dans un monde de super heros</h1>
 </header>
 <hr>
-<?php include_once ('./src/View/common/nav.php');?>
+<nav class="btn-group">
+  <a href="<?= PATH . '/index.php/' ?>" class="btn btn-default">Accueil</a>
+  <a href="<?= PATH . '/index.php/power/getAll' ?>" class="btn btn-default">Liste des pouvoirs</a>
+  <a href="<?= PATH . '/index.php/team/getAll' ?>" class="btn btn-default">Liste des teams</a>
+  <a href="<?= PATH . '/index.php/hero/getAll' ?>" class="btn btn-default">Liste des héros</a>
+</nav>
 <hr>
 <main>
 
