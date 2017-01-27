@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: r-1
- * Date: 21/12/2016
- * Time: 12:20
- */
 
-namespace src\View;
-
+namespace SuperHero\View;
 
 class View
 {
@@ -35,6 +28,7 @@ class View
         }else{
             throw new \Exception("le fichier $view est introuvable mon lapin...");
         }
+        return -1;
     }
 
 }

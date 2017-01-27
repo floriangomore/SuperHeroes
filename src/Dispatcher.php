@@ -1,14 +1,8 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: r-1
- * Date: 21/12/2016
- * Time: 11:50
- */
+namespace SuperHero;
 
-namespace src\Controller;
-
+use SuperHero\Controller\DefaultController;
 
 class Dispatcher
 {
@@ -17,11 +11,12 @@ class Dispatcher
     private $result;
     private $defControl;
 
-    public function __construct($url,$method)
+    public function __construct($em)
     {
-        $this->url = $url;
-        $this->method = $method;
-        $this->defControl = new DefaultController();
+        $this->em = $em; // <-- Doctrine object
+        $this->url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : null;
+        $this->method = $_SERVER['REQUEST_METHOD'];
+        $this->defControl = new DefaultController($this->em);
     }
 
     public function dispatch()
