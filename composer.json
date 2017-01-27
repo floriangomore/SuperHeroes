@@ -1,0 +1,14 @@
+{
+    "name": "imie-groupe3/refactoringhero",
+    "description": "Refactoring SuperHero project with Doctrine",
+    "require": {
+        "doctrine/orm": "^2.5",
+        "symfony/yaml": "^3.2"
+    },
+    "authors": [
+        {
+            "name": "Florian Bouchet",
+            "email": "florian.bouchet.contact@gmail.com"
+        }
+    ]
+}

@@ -1,17 +1,13 @@
 <?php
-// index.php
-session_start();
-
-use Imie\Dispatcher;
-use Imie\Service\FlashBag;
-
-require_once "vendor/autoload.php";
-require_once "bootstrap.php";
-
+require_once "autoload.php";
+use src\Controller\Dispatcher;
 define('_PUBLIC_PATH_', __DIR__ .'\\public\\');
-
-$path = explode(DIRECTORY_SEPARATOR, __DIR__);
-define('PATH', '/' . $path[sizeof($path)-1]);
-
-$dispatch = new Dispatcher($em);
+if (isset($_SERVER['PATH_INFO'])&&$_SERVER['PATH_INFO']!=null){
+    $url = $_SERVER['PATH_INFO'];
+}else{
+    $url = null;
+}
+$method = $_SERVER['REQUEST_METHOD'];
+const PATH = 'pdo-aldl04/TP/SuperHero';
+$dispatch = new Dispatcher($url,$method);
 echo $dispatch->dispatch();
