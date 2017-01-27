@@ -2,6 +2,7 @@
 
 use src\Dispatcher;
 
+require_once "vendor/autoload.php";
 
 define('_PUBLIC_PATH_', __DIR__ .'\\public\\');
 if (isset($_SERVER['PATH_INFO'])&&$_SERVER['PATH_INFO']!=null){
