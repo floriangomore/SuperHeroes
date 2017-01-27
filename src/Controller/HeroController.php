@@ -2,25 +2,16 @@
 
 namespace src\Controller;
 
-use src\Entity\Hero;
-use src\Entity\Power;
-use src\Entity\Team;
+use src\Entity;
 
 class HeroController extends Controller{
 
-    public function indexAction(){
-        $em = $this->getDoctrine();
-        $userRepo = $em->getRepository('src\Entity\Hero');
 
-        return $this->render('hero', 'allHero', [
-            "users" => $userRepo->findAll()
-        ]);
 
-    }
 
-    public function getAllAction(){
 
-    }
+
+
 
 
 

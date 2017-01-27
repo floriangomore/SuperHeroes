@@ -10,4 +10,6 @@ class DefaultController extends Controller
         $view = new View('default','index');
         return $view->renderView(['default'=>null]);
     }
+
+
 }

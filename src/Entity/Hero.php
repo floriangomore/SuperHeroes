@@ -1,9 +1,5 @@
 <?php
 
-namespace src\Entity;
-
-use Doctrine\Common\Collections\ArrayCollection;
-
 class Hero{
 
     /**
@@ -43,6 +39,10 @@ class Hero{
 
     private $hero_logo;
 
+    public function __construct(){
+        $this->reportedBugs = new ArrayCollection();
+        $this->assignedBugs = new ArrayCollection();
+    }
 
     public function getId(){
         return $this->id;
